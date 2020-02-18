@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Gestionnaire d'hôtels Hb-HotelManager
+{% endblock %}
+
+{% block content %}
+
+    <div class="text-center">
+        <h1>Gestion des clients</h1>
+    </div>
+
+    <hr>
+
+    <div class="card text-center mb-3">
+        <div class="card-header">
+            <strong>Actions</strong>
+        </div>
+        <div class="card-body">
+            <a href="{{ env.base_path ~ '/clients/new/'}}" class="btn btn-primary">
+                Créer un nouveau client
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header text-center"><strong>Liste des chambres</strong></div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id du client</th>
+                        <th>Nom du client</th>
+                        <th>Prénom du client</th>
+                        <th>Date d'arrivée</th>
+                        <th>Date de départ</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.firstname }}</td>
+                        <td>{{ client.lastname }}</td>
+                        <td>{{ client.entryDate|date('d/m/Y') }}</td>
+                        <td>{{ client.departureDate|date('d/m/Y') }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{ env.base_path ~ '/clients/' ~ client.id }}">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

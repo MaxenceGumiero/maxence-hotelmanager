@@ -9,7 +9,7 @@ $configuration = [
         'password' => '',
     ],
     'env' => [
-        'base_path' => 'http://localhost:3306/hbhotelmanager-maxence',
+        'base_path' => 'http://localhost/maxence-hotelmanager',
         'site_name' => 'HB Hotel Manager'
     ]
 ];

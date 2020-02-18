@@ -18,4 +18,13 @@ class PagesController extends AbstractController {
         ]);
     }
 
+    /**
+     * Traitement du formulaire de création puis redirection vers l'index des rooms
+     * POST /rooms/new
+     */
+    public function create()
+    {
+        $this->container->getRoomManager()->create($_POST);
+        $this->index();
+    }
 }

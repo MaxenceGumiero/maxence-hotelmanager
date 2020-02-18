@@ -9,6 +9,9 @@ class Room {
     private $clientId;
     private $client;
 
+    /**
+     * @return int
+     */
     public function getId() {
         return $this->id;
     }
@@ -17,6 +20,9 @@ class Room {
         $this->id = $id;
     }
 
+    /**
+     * @return int
+     */
     public function getNumber() {
         return $this->number;
     }
@@ -25,6 +31,9 @@ class Room {
         $this->number = $number;
     }
 
+    /**
+     * @return int
+     */
     public function getClientId() {
         return $this->clientId;
     }
@@ -33,6 +42,9 @@ class Room {
         $this->clientId = $clientId;
     }
 
+    /**
+     * @return Client
+     */
     public function getClient() {
         return $this->client;
     }

@@ -17,4 +17,14 @@ class RoomsController extends AbstractController {
             'room' => $room
         ]);
     }
+
+
+    /**
+     * Affichage du formulaire de création
+     * GET /rooms/new
+     */
+    public function new()
+    {
+        echo $this->container->getTwig()->render('rooms/form.html.twig');
+    }
 }

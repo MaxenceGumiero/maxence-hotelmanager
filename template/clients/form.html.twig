@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Création / Modification d'un client
+{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="jumbotron col-4">
+        {% if client %}
+            <form action="{{ env.base_path ~ '/clients/' ~ client.id ~ '/edit' }}" method="post" class="form">
+            <h3>Modifier le client</h3>
+        {% else %}
+            <form action="{{ env.base_path ~ '/clients/new/' }}" method="post" class="form">
+            <h3>Nouveau client</h3>
+        {% endif %}
+            <hr>
+            <div class="form-group">
+                <label for="formFirstname">Prénom</label>
+                <input id="formFirstname" type="text" class="form-control mb-3" name="firstname" value="{{ client.firstname }}">
+                <label for="formLastname">Nom</label>
+                <input id="formLastname" type="text" class="form-control mb-3" name="lastname" value="{{ client.lastname }}">
+                <label for="formEntryDate">Date d'arrivée</label>
+                <input id="formEntryDate" type="date" class="form-control mb-3" name="entryDate" value="{{ client.entryDate }}">
+                <label for="formDepartureDate">Date de départ</label>
+                <input id="formDepartureDate" type="date" class="form-control mb-3" name="departureDate" value="{{ client.departureDate }}">
+            </div>
+
+            <div class="pull-right">
+                <button class="btn btn-primary btn-block">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

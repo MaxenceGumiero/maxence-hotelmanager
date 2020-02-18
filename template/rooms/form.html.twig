@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Création d'une chambre
+{% endblock title %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="jumbotron col-4">
+            {% if room %}
+                <form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post" class="form">
+                <h3>Modifier la chambre</h3>
+            {% else %}
+                <form action="{{ env.base_path ~ '/rooms/new/' }}" method="post" class="form">
+                <h3>Nouvelle chambre</h3>
+            {% endif %}
+                <hr>
+                <div class="form-group">
+                    <label for="formNumber">Numéro</label>
+                    <input id="formNumber" type="text" class="form-control" name="number" value="{{ room.number }}">
+                </div>
+        
+                <div class="pull-right">
+                <button class="btn btn-primary btn-block">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
