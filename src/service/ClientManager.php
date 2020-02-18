@@ -26,9 +26,6 @@ class ClientManager extends AbstractManager implements ManagerInterface {
         $client->setLastname($array['lastname']);
         $client->setEntryDate($array['entry_date']);
         $client->setDepartureDate($array['departure_date']);
-        
-        // $client->setClient(); // à faire
-
         return $client;
     }
 

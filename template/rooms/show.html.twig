@@ -18,7 +18,7 @@ Gestionnaire d'hôtels Hb-HotelManager
         </div>
         <div class="card-body">
             <p>
-                Occupée par <strong>{{ room.client.firstname }} {{ room.client.lastname }}</strong>. <a href="" class="text-danger">Supprimer le client</a>
+                Occupée par <strong>{{ room.client.firstname }} {{ room.client.lastname }}</strong>. <a href="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/removeclient' }}" class="text-danger">Supprimer le client</a>
             </p>
         </div>
         <div class="card-footer">

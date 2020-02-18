@@ -33,9 +33,10 @@ Gestionnaire d'hôtels Hb-HotelManager
                 <thead>
                     <tr>
                         <th>Numéro de chambre</th>
+                        <th>Reservation</th>
                         <th>Occupation</th>
-                        <th>Départ</th>
                         <th>Arrivée</th>
+                        <th>Départ</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -45,14 +46,26 @@ Gestionnaire d'hôtels Hb-HotelManager
                     <tr>
                         <td>{{ room.number }}</td>
                         <td>
-                            {% if room.clientId %}
+                            {% if room.client %}
+                            <span class="badge badge-warning">Réservée</span>
+                            {% else %}
+                            <span class="badge badge-success">Disponible</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if room.client %}
                                 <span class="badge badge-danger">Occupée</span>
                             {% else %}
                                 <span class="badge badge-success">Libre</span>
                             {% endif %}
                         </td>
-                        <td></td>
-                        <td>2020/03/20</td>
+                        {% if room.client %}
+                            <td>{{ room.client.departureDate|date('d/m/Y') }}</td>
+                            <td>{{ room.client.entryDate|date('d/m/Y') }}</td>
+                        {% else %}
+                            <td>-</td>
+                            <td>-</td>
+                        {% endif %}
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{ env.base_path ~ '/rooms/' ~ room.id }}">
                                 <i class="fa fa-search" aria-hidden="true"></i>

@@ -37,32 +37,41 @@ class PagesController extends AbstractController {
 
     /**
      * Affichage du formulaire d'édition
-     * GET /rooms/new
+     * GET /rooms/edit
      */
     public function edit(int $id) {
 
-        $client = $this->container->getRoomManager()->findOneById($id);
+        $room = $this->container->getRoomManager()->findOneById($id);
 
         echo $this->container->getTwig()->render('rooms/form.html.twig', [
-            'client' => $client
+            'room' => $room
         ]);
     }
 
     /**
-     * Suppression d'un client
-     * GET /rooms/:id/delete
+     * Traitement du formulaire d'édition puis redirection vers l'index des rooms
+     * POST /rooms/edit
      */
-    public function delete(int $id) {
-        $this->container->getRoomManager()->delete($id);
+    public function update(int $id) {
+        $this->container->getRoomManager()->update($id, $_POST);
         $this->index();
     }
 
     /**
      * Traitement du formulaire d'édition puis redirection vers l'index des rooms
-     * POST /rooms/new
+     * POST /rooms/removeClient
      */
-    public function update(int $id) {
-        $this->container->getRoomManager()->update($id, $_POST);
+    public function removeClient(int $id) {
+        $this->container->getRoomManager()->removeClient($id);
+        $this->index();
+    }
+
+    /**
+     * Suppression d'une room
+     * GET /rooms/:id/delete
+     */
+    public function delete(int $id) {
+        $this->container->getRoomManager()->delete($id);
         $this->index();
     }
 }

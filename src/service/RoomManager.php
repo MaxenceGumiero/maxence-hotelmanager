@@ -24,8 +24,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
         $room->setId($array['id']);
         $room->setNumber($array['number']);
         $room->setClientId($array['client_id']);
-        
-        // $room->setClient(); // à faire
+        // $room->setClient($array['client']);
 
         return $room;
     }
@@ -91,16 +90,26 @@ class RoomManager extends AbstractManager implements ManagerInterface {
     /**
      * @param array $data
      */
-    public function update(int $id, array $data)
-    {
-        $query = "UPDATE room client_id = :clientId WHERE id = :id";
+    public function update(int $id, array $data) {
+        $query = "UPDATE room SET client_id = :clientId WHERE id = :id";
 
         $statement = $this->pdo->prepare($query);
         $statement->execute([
             'id' => $id,
             'clientId'  => $data['clientId']
         ]);
+    }
 
+    /**
+     * @param array $data
+     */
+    public function removeClient(int $id) {
+        $query = "UPDATE room SET client_id = Null WHERE id = :id";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'id' => $id,
+        ]);
     }
 
     public function delete(int $id) {
