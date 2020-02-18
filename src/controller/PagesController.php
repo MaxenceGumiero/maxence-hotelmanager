@@ -11,7 +11,9 @@ class PagesController extends AbstractController {
     public function index() {
         // 1. Récupérer les rooms
         $rooms = $this->container->getRoomManager()->findAll();
+        // 2. Récupérer les clients
         $clients = $this->container->getClientManager()->findAll();
+        // 3. Faire un setClient pour chacune des chambres si celles-ci ont un client_id différent de Null
         foreach($rooms as $room) {
             if ($room->getClientId()) {
                 $client = $this->container->getClientManager()->findOneById($room->getClientId());
@@ -20,7 +22,7 @@ class PagesController extends AbstractController {
             }
             $room->setClient($client); 
         }
-        // 2. Afficher les rooms
+        // 4. Afficher les rooms ainsi que les clients
         echo $this->container->getTwig()->render('pages/index.html.twig', [
             'rooms' => $rooms, 'clients' => $clients,
         ]);
