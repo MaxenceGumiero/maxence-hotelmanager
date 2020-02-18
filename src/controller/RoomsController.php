@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 class RoomsController extends AbstractController {
-
     /**
      * Afficher la page de 1 room
      * Route: GET /rooms/:id
@@ -33,8 +32,7 @@ class RoomsController extends AbstractController {
      * Affichage du formulaire de création
      * GET /rooms/new
      */
-    public function new()
-    {
+    public function new() {
         echo $this->container->getTwig()->render('rooms/form.html.twig');
     }
 }

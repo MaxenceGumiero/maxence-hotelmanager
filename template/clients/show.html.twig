@@ -6,11 +6,9 @@ Gestionnaire d'hôtels Hb-HotelManager
 
 {% block content %}
 
-
 <a href="{{ env.base_path ~ '/clients' }}">
     <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
 </a>
-
 <div class="row">
     <div class="col">
         <div class="card">
@@ -20,7 +18,6 @@ Gestionnaire d'hôtels Hb-HotelManager
                 <a href="{{ env.base_path ~ '/clients/' ~ client.id ~ '/delete' }}" class="btn btn-danger">Supprimer</a>
             </div>
         </div>
-
     </div>
 </div>
 

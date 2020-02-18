@@ -18,13 +18,11 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      * @param array $array
      * @return Room
      */
-    public function arrayToObject(array $array)
-    {
+    public function arrayToObject(array $array) {
         $room = new Room;
         $room->setId($array['id']);
         $room->setNumber($array['number']);
         $room->setClientId($array['client_id']);
-        // $room->setClient($array['client']);
 
         return $room;
     }
@@ -32,8 +30,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
     /**
      * @return Room[]
      */
-    public function findAll()
-    {
+    public function findAll() {
         $query = "SELECT * FROM room";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
@@ -53,8 +50,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      * @param int $id
      * @return Room
      */
-    public function findOneById(int $id)
-    {
+    public function findOneById(int $id) {
         $query = "SELECT * FROM room WHERE id = :id";
         $statement = $this->pdo->prepare($query);
         $statement->execute(['id' => $id]);
@@ -71,8 +67,7 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      * @param string $value
      * @return Room[]
      */
-    public function findByField(string $field, string $value)
-    {
+    public function findByField(string $field, string $value) {
     }
 
     /**

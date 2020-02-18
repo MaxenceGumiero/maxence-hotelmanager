@@ -8,8 +8,7 @@ class ClientManager extends AbstractManager implements ManagerInterface {
 
     private $pdo;
 
-    public function __construct(PDO $pdo)
-    {
+    public function __construct(PDO $pdo) {
         parent::__construct();
         $this->pdo = $pdo;
     }
@@ -18,8 +17,7 @@ class ClientManager extends AbstractManager implements ManagerInterface {
      * @param array $array
      * @return Client
      */
-    public function arrayToObject(array $array)
-    {
+    public function arrayToObject(array $array) {
         $client = new Client;
         $client->setId($array['id']);
         $client->setFirstname($array['firstname']);
@@ -32,8 +30,7 @@ class ClientManager extends AbstractManager implements ManagerInterface {
     /**
      * @return Client[]
      */
-    public function findAll()
-    {
+    public function findAll() {
         $query = "SELECT * FROM client";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
@@ -53,8 +50,7 @@ class ClientManager extends AbstractManager implements ManagerInterface {
      * @param int $id
      * @return Client
      */
-    public function findOneById(int $id)
-    {
+    public function findOneById(int $id) {
         $query = "SELECT * FROM client WHERE id = :id";
         $statement = $this->pdo->prepare($query);
         $statement->execute(['id' => $id]);
@@ -93,8 +89,7 @@ class ClientManager extends AbstractManager implements ManagerInterface {
     /**
      * @param array $data
      */
-    public function update(int $id, array $data)
-    {
+    public function update(int $id, array $data) {
         $query = "UPDATE client SET firstname = :firstname, lastname = :lastname, entry_date = :entryDate, departure_date = :departureDate WHERE id = :id";
 
         $statement = $this->pdo->prepare($query);

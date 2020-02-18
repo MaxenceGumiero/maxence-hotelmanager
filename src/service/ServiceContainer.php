@@ -29,8 +29,7 @@ class ServiceContainer {
     }
 
     public function getPdo() {
-        if ($this->pdo === null)
-        {
+        if ($this->pdo === null) {
             $this->pdo = new PDO(
                     $this->configuration['db']['dsn'],
                     $this->configuration['db']['username'],
@@ -41,32 +40,25 @@ class ServiceContainer {
     }
 
     public function getRoomManager() {
-        if ($this->roomManager === null)
-        {
+        if ($this->roomManager === null) {
             $this->roomManager = new RoomManager($this->getPdo());
         }
-
         return $this->roomManager;
     }
 
     public function getClientManager() {
-        if ($this->clientManager === null)
-        {
+        if ($this->clientManager === null) {
             $this->clientManager = new ClientManager($this->getPdo());
         }
-
         return $this->clientManager;
     }
 
     public function getTwig() {
-
         if ($this->twig === null) {
             try {
-
                 $loader = new FilesystemLoader(__DIR__ . '/../../template');
                 $twig = new Environment($loader);
                 $twig->addGlobal('env', $this->configuration['env']);
-
                 $this->twig = $twig;
             }
             catch(Error $e) {
@@ -74,6 +66,5 @@ class ServiceContainer {
             }
         }
         return $this->twig;
-
     }
 }
