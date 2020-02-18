@@ -5,10 +5,17 @@ namespace App\Controller;
 class PagesController extends AbstractController {
 
     /**
-     * Route: page d'accueil ('/')
+     * Afficher la liste des rooms
+     * Route: GET /
      */
     public function index() {
-        echo $this->container->getTwig()->render('pages/index.html.twig');
+        // 1. Récupérer les rooms
+        $rooms = $this->container->getRoomManager()->findAll();
+
+        // 2. Afficher les rooms
+        echo $this->container->getTwig()->render('pages/index.html.twig', [
+            'rooms' => $rooms
+        ]);
     }
 
 }
