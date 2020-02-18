@@ -14,6 +14,9 @@ class RoomsController extends AbstractController {
         $clients = $this->container->getClientManager()->findAll();
         if ($room->getClientId()) { 
             $client = $this->container->getClientManager()->findOneById($room->getClientId());
+            if (!$client->getId()) {
+                $client = Null;
+            }
         } else { 
             $client = Null;
         }
