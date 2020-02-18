@@ -93,13 +93,12 @@ class RoomManager extends AbstractManager implements ManagerInterface {
      */
     public function update(int $id, array $data)
     {
-        $query = "UPDATE room SET number = :number, client_id = :client_id WHERE id = :id";
+        $query = "UPDATE room client_id = :clientId WHERE id = :id";
 
         $statement = $this->pdo->prepare($query);
         $statement->execute([
             'id' => $id,
-            'number' => $data['number'],
-            'client_id'  => $data['client_id']
+            'clientId'  => $data['clientId']
         ]);
 
     }

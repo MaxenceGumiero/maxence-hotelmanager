@@ -11,7 +11,7 @@ class ClientsController extends AbstractController {
     public function index() {
         // 1. Récupérer les clients
         $clients = $this->container->getClientManager()->findAll();
-        
+
         // 2. Afficher les clients
         echo $this->container->getTwig()->render('clients/index.html.twig', [
             'clients' => $clients
@@ -60,7 +60,9 @@ class ClientsController extends AbstractController {
 
         $client = $this->container->getClientManager()->findOneById($id);
 
-        echo $this->container->getTwig()->render('clients/form.html.twig', ['client' => $client]);
+        echo $this->container->getTwig()->render('clients/form.html.twig', [
+            'client' => $client
+        ]);
     }
 
     /**

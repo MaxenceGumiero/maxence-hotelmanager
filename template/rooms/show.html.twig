@@ -11,14 +11,14 @@ Gestionnaire d'hôtels Hb-HotelManager
 </a>
 <!-- CAS 1 : La chambre est innoccupée -->
 
-{% if room.client %}
+{% if room.clientId %}
     <div class="card">
         <div class="card-header">
             <strong>Gestion de la chambre # {{ room.number }}</strong> <span class="badge badge-danger">Occupée</span>
         </div>
         <div class="card-body">
             <p>
-                Occupée par Emma Watson. <a href="" class="text-danger">Supprimer le client</a>
+                Occupée par <strong>{{ room.client.firstname }} {{ room.client.lastname }}</strong>. <a href="" class="text-danger">Supprimer le client</a>
             </p>
         </div>
         <div class="card-footer">
@@ -33,12 +33,12 @@ Gestionnaire d'hôtels Hb-HotelManager
             <strong>Gestion de la chambre # {{ room.number }}</strong> <span class="badge badge-success">Libre</span>
         </div>
         <div class="card-body">
-            <form action="{{ env.base_path ~ '/rooms/' ~ location.id ~ '/edit' }}" method="post">
+            <form action="{{ env.base_path ~ '/rooms/' ~ room.id ~ '/edit' }}" method="post">
                 <div class="form-group">
                     <label for="formClient">Ajouter un client</label>
-                    <select name="client_id" id="formClient" class="form-control">
+                    <select name="clientId" id="formClient" class="form-control">
                         {% for client in clients %}
-                            <option value="{{ client.id }}" {% if room and room.carId == car.id %} selected {% endif %}>
+                            <option value="{{ client.id }}" {% if room and room.clientId == client.id %} selected {% endif %}>
                                 {{ client.firstname }} {{ client.lastname }}
                             </option>
                         {% endfor %}
