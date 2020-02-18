@@ -32,11 +32,11 @@ Gestionnaire d'hôtels Hb-HotelManager
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Numéro de chambre</th>
+                        <th>N° de chambre</th>
                         <th>Reservation</th>
                         <th>Occupation</th>
-                        <th>Arrivée</th>
-                        <th>Départ</th>
+                        <th>Prochain départ</th>
+                        <th>Prochaine arrivée</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -46,22 +46,30 @@ Gestionnaire d'hôtels Hb-HotelManager
                     <tr>
                         <td>{{ room.number }}</td>
                         <td>
-                            {% if room.client %}
-                            <span class="badge badge-warning">Réservée</span>
+                            {% if date(room.client.entryDate) > date() or (date(room.client.departureDate) > date()) %}
+                                <span class="badge badge-warning">Réservée</span>
                             {% else %}
-                            <span class="badge badge-success">Disponible</span>
+                                <span class="badge badge-success">Disponible</span>
                             {% endif %}
                         </td>
                         <td>
-                            {% if room.client %}
+                            {% if (date(room.client.departureDate) > date()) and (date(room.client.entryDate) < date()) %}
                                 <span class="badge badge-danger">Occupée</span>
                             {% else %}
                                 <span class="badge badge-success">Libre</span>
                             {% endif %}
                         </td>
                         {% if room.client %}
-                            <td>{{ room.client.departureDate|date('d/m/Y') }}</td>
-                            <td>{{ room.client.entryDate|date('d/m/Y') }}</td>
+                            {% if date(room.client.departureDate) > date() %}
+                                <td>{{ date(room.client.departureDate)|date('d/m/Y') }}</td>
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
+                            {% if date(room.client.entryDate) > date() %}
+                                <td>{{ date(room.client.entryDate)|date('d/m/Y') }}</td>
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
                         {% else %}
                             <td>-</td>
                             <td>-</td>

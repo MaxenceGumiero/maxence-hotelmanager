@@ -1,3 +1,9 @@
+# Note pour Thomas :
+
+> J'ai modifié deux trois éléments d'apparence pour améliorer l'expérience utilisateur, j'ai rajouté le bouton gestion des chambres dans la navbar, et déplacé l'action créer un nouveau client dans les actions de la page des clients.
+
+> -----
+
 # Examen : Créer un projet en MVC avec PHP
 ## Exemple de projet terminé (conducteurs, voitures et locations)
 
