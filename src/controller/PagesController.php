@@ -22,9 +22,17 @@ class PagesController extends AbstractController {
      * Traitement du formulaire de création puis redirection vers l'index des rooms
      * POST /rooms/new
      */
-    public function create()
-    {
+    public function create() {
         $this->container->getRoomManager()->create($_POST);
+        $this->index();
+    }
+
+    /**
+     * Suppression d'un client
+     * GET /rooms/:id/delete
+     */
+    public function delete(int $id) {
+        $this->container->getRoomManager()->delete($id);
         $this->index();
     }
 }

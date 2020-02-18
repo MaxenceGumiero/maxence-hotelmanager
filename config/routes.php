@@ -7,13 +7,17 @@ $router->setNamespace('App\Controller');
  * Routes de base
  */
 $router->get('', 'PagesController@index');                          // Page d'accueil contenant entre autres la liste des rooms
+$router->post('/rooms/new/', 'PagesController@create');             // Traite le formulaire de création d'une room puis redirige
+$router->get('/rooms/(\d+)/edit/', 'PagesController@edit');         // Affiche le formulaire d'édition d'une room
+$router->post('/rooms/(\d+)/edit/', 'PagesController@update');      // Traite le formulaire d'édition d'une room puis redirige
+$router->get('/rooms/(\d+)/delete/', 'PagesController@delete');     // Action de supprimer une room
 
 /**
  * Routes ROOM
  */
 $router->get('/rooms/(\d+)', 'RoomsController@show');               // Affichage d'une room
 $router->get('/rooms/new/', 'RoomsController@new');                 // Affiche le formulaire de création d'une room
-$router->post('/rooms/new/', 'PagesController@create');             // Traite le formulaire de création d'une room puis redirige
+
 /**
  * Routes CLIENT
  */

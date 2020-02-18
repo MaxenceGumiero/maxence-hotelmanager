@@ -17,11 +17,10 @@ Gestionnaire d'hôtels Hb-HotelManager
             <strong>Actions</strong>
         </div>
         <div class="card-body">
-            <a href="{{ env.base_path ~ '/clients/new/'}}" class="btn btn-primary">
-                Créer un nouveau client
+            <a href="{{ env.base_path ~ '/clients'}}" class="btn btn-elegant">
+                Liste des clients
             </a>
-
-            <a href="{{ env.base_path ~ '/rooms/new/'}}" class="btn btn-secondary">
+            <a href="{{ env.base_path ~ '/rooms/new/'}}" class="btn btn-primary">
                 Créer une nouvelle chambre
             </a>
         </div>
@@ -55,7 +54,7 @@ Gestionnaire d'hôtels Hb-HotelManager
                         <td></td>
                         <td>2020/03/20</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="{{ env.base_path ~ '/rooms/1' }}">
+                            <a class="btn btn-primary btn-sm" href="{{ env.base_path ~ '/rooms/' ~ room.id }}">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </a>
                         </td>

@@ -25,11 +25,9 @@
                 <label for="formDepartureDate">Date de départ</label>
                 <input id="formDepartureDate" type="date" class="form-control mb-3" name="departureDate" value="{{ client.departureDate }}">
             </div>
-
-            <div class="pull-right">
-                <button class="btn btn-primary btn-block">Valider</button>
-            </div>
+            <button class="btn btn-primary btn-block">Valider</button>
         </form>
+        <a href="{{ env.base_path ~ '/clients' }}" class="btn btn-elegant btn-block mt-3">Retour</a>
     </div>
 </div>
 {% endblock content %}

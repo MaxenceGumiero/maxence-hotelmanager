@@ -11,13 +11,13 @@ class RoomsController extends AbstractController {
     public function show(int $id) {
         // 1. Récupérer le car par son id
         $room = $this->container->getRoomManager()->findOneById($id);
+        $clients = $this->container->getClientManager()->findAll();
 
         //2. Afficher la room
         echo $this->container->getTwig()->render('rooms/show.html.twig', [
-            'room' => $room
+            'room' => $room, 'clients' => $clients
         ]);
     }
-
 
     /**
      * Affichage du formulaire de création
